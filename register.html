@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+</head>
+<body>
+  <h2>Register</h2>
+  <form id="registerForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" placeholder="Username" required />
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" placeholder="Password" required />
+    <br>
+    <label for="role">Role:</label>
+    <select id="role" name="role" required>
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+    </select>
+    <br>
+    <button type="submit">Register</button>
+  </form>
+
+  <p>Sudah punya akun? <a href="/Login.html">Login</a></p>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const role = document.getElementById('role').value;
+
+      // Validasi data
+      if (!username || !password || !role) {
+        alert('Semua kolom harus diisi!');
+        return;
+      }
+
+      // Mengirim data register ke server
+      const response = await fetch('/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password, role }),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        alert('Registrasi berhasil! Silakan login.');
+        window.location.href = '/login.html'; // Redirect ke halaman login setelah berhasil register
+      } else {
+        alert(result.message);
+      }
+    });
+  </script>
+</body>
+</html>

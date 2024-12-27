@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Kapal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  </form>
+  <h1>Data Kapal</h1>
+  <table id="kapal-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nama Kapal</th>
+        <th>Jenis Kapal</th>
+        <th>Kapasitas Muatan</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <h2>Tambah Kapal</h2>
+  <form id="add-kapal-form">
+    <input type="text" id="nama_kapal" placeholder="Nama Kapal" required>
+    <input type="text" id="jenis_kapal" placeholder="Jenis Kapal" required>
+    <input type="number" id="kapasitas_muatan" placeholder="Kapasitas Muatan" required>
+    <button type="submit">Tambah</button>
+  </form>
+
+  <h2>Edit Kapal</h2>
+<form id="edit-kapal-form" style="display: none;">
+  <input type="hidden" id="edit_id_kapal">
+  <input type="text" id="edit_nama_kapal" placeholder="Nama Kapal" required>
+  <input type="text" id="edit_jenis_kapal" placeholder="Jenis Kapal" required>
+  <input type="number" id="edit_kapasitas_muatan" placeholder="Kapasitas Muatan" required>
+  <button type="submit">Simpan Perubahan</button>
+</form>
+
+  <script src="app.js"></script>
+</body>
+</html>
